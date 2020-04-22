@@ -1,0 +1,16 @@
+.header {
+  grid-area: header;
+  background-color: whitesmoke;
+}
+
+.header img {
+  width: 100px;
+  height: 100px;
+}
+
+.header h1 {
+  font-size: 35px;
+  color: red;
+  float: left;
+  margin: 0 0 5px 5px;
+}
