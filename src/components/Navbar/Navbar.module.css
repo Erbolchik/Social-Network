@@ -14,3 +14,14 @@
   color:gold;
   font-size: 30px;
 }
+
+.friends{
+  margin-top: 50px;
+  font-size: 25px;
+  
+}
+.friends img{
+  border-radius: 30px;
+  width: 75px;
+  height: 100px;
+}
