@@ -1,9 +1,9 @@
-import {createStore, combineReducers} from 'redux'
+import {createStore, combineReducers,applyMiddleware} from 'redux'
 import profileReducer from './profileReducer';
 import sidebarReducer  from './sidebarReducer';
 import dialogsReducer  from './dialogsReducer';
 import usersReducer from './usersReducer';
-
+import logger from 'redux-logger'
 
 
 let reducers = combineReducers({
@@ -13,7 +13,7 @@ let reducers = combineReducers({
     usersPage:usersReducer
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers,applyMiddleware(logger));
 
 window.store=store
 
