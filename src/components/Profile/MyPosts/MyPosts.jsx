@@ -5,7 +5,6 @@ import Post from './Posts/Post'
 
 
 const MyPosts = (props) => {
-  console.log(props)
   let postsElement = props.profilePage.posts.map(el => <Post messagePost={el.messagePost} likesCount={el.likesCount} image={el.image} key={el.id}/>)
 
   let onAddPost = () => {
