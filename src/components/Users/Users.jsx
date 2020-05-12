@@ -3,7 +3,6 @@ import style from './Users.module.css'
 import { NavLink } from 'react-router-dom'
 
 let Users = (props) => {
-    console.log(props)
     let pagesCount = 5
 
     let pages = []

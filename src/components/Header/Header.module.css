@@ -14,3 +14,10 @@
   float: left;
   margin: 0 0 5px 5px;
 }
+
+.loginBlock{
+  float: right;
+}
+.loginBlock a{
+  color:black
+}

@@ -1,6 +1,7 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
 
 let initialState = {
     posts: [
@@ -9,7 +10,8 @@ let initialState = {
         { id: 3, messagePost: 'Naruto kun', likesCount: 10, image: 'https://sun9-10.userapi.com/c636425/v636425166/48d47/W9mfN_6ZBSg.jpg' }
     ],
     newPostText: '',
-    profile:null
+    profile:null,
+    isFetching:true,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -36,6 +38,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile:action.profile
             }
+        case TOGGLE_IS_FETCHING:
+            return{
+                    ...state,
+                    isFetching:action.isFetching
+            }
         default:
             return state
     }
@@ -51,5 +58,7 @@ export const updateNewPostTextActionCreator = (text) => ({
 export const setUserProfile = (profile) => ({
     type: SET_USER_PROFILE, profile
 })
+
+export const setIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching})
 
 export default profileReducer
