@@ -2,6 +2,7 @@ import React from 'react'
 import style from './Users.module.css'
 import { NavLink } from 'react-router-dom'
 
+
 let Users = (props) => {
     let pagesCount = 5
 
@@ -26,8 +27,11 @@ let Users = (props) => {
                     </div>
                     <div>
                         {el.followed ?
-                            <button onClick={() => { props.unfollow(el.id) }}>Followed</button> :
-                            <button onClick={() => { props.follow(el.id) }}>Unfollowed</button>}
+                            <button disabled={props.followingInProgress.some(id => id === el.id)} 
+                            onClick={() => props.unfollow(el.id)}>Followed</button> 
+                            :
+                            <button disabled={props.followingInProgress.some(id => id === el.id)} 
+                            onClick={() =>  props.follow(el.id)}>Unfollowed</button>}
                     </div>
                 </span>
                 <span>
