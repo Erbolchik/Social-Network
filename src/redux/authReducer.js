@@ -1,3 +1,4 @@
+import {authAPI} from '../api/api'
 const SET_USER_DATA = 'SET-USER-DATA'
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
 const LOG_OUT = 'LOG-OUT'
@@ -38,6 +39,15 @@ export const setIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetc
 export const logOut = () => ({ type: LOG_OUT })
 export const logIn = () => ({ type: LOG_IN })
 
-
+export const getAuthUserData=()=>{
+    return dispatch=>{
+        authAPI.auth().then(response => {
+            if (response.resultCode === 0) {
+              const { id, login, email } = response.data;
+              dispatch(setAuthUserData(id, email, login))
+            }
+          })
+    }
+}
 
 export default authReducer

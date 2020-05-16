@@ -28,10 +28,10 @@ let Users = (props) => {
                     <div>
                         {el.followed ?
                             <button disabled={props.followingInProgress.some(id => id === el.id)} 
-                            onClick={() => props.unfollow(el.id)}>Followed</button> 
+                            onClick={() => props.unfollow(el.id)}>Unfollowed</button> 
                             :
                             <button disabled={props.followingInProgress.some(id => id === el.id)} 
-                            onClick={() =>  props.follow(el.id)}>Unfollowed</button>}
+                            onClick={() =>  props.follow(el.id)}>Follow</button>}
                     </div>
                 </span>
                 <span>
