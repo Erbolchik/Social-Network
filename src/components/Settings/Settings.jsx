@@ -1,12 +1,15 @@
 import React from 'react'
 import style from './Settings.module.css'
+import { Progress } from 'antd';
 
-
-const Setting =()=>{
+const Setting = () => {
     return (
-    <div>
-        Settings Page
-    </div>
+        <div>
+            
+            <Progress type="circle" percent={75} />
+            <Progress type="circle" percent={70} status="exception" />
+            <Progress type="circle" percent={100} />
+        </div>
     );
 }
 
