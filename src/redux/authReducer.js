@@ -49,5 +49,17 @@ export const getAuthUserData=()=>{
           })
     }
 }
+export const loginIn=(data)=>{
+    return dispatch=>{
+        authAPI.login(data)
+    }
+}
+
+
+export const unLoginIn=()=>{
+    return dispatch=>{
+        authAPI.unlogin()
+    }
+}
 
 export default authReducer

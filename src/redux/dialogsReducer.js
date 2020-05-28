@@ -1,5 +1,4 @@
 const SEND_MESSAGE = 'SEND-MESSAGE'
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE'
 
 let initialState = {
     dialogs: [
@@ -16,35 +15,21 @@ let initialState = {
         { id: 3, message: 'its react' },
         { id: 4, message: 'its so hard' },
     ],
-    newMessageText: ''
 }
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE:
-            let newMessage = {
-                id: 5,
-                message: state.newMessageText
-            }
+            let newMessage = { id: 5, message: action.newMessageBody }
             return {
                 ...state,
                 messages: [...state.messages, newMessage], // добавляем новый элемент  в массив 
-                newMessageText: ''
-            }
-        case UPDATE_NEW_MESSAGE:
-            return {
-                ...state,
-                newMessageText: action.newMessage
             }
         default:
             return state;
     }
 }
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE })
-
-export const updateNewMessageActionCreator = (message) => ({
-    type: UPDATE_NEW_MESSAGE, newMessage: message
-})
+export const sendMessageActionCreator = (newMessageBody) => ({ type: SEND_MESSAGE, newMessageBody })
 
 
 export default dialogsReducer
