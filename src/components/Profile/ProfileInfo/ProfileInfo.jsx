@@ -1,24 +1,22 @@
 import React from 'react'
 import style from './ProfileInfo.module.css'
 import Preloader from '../../common/Preloader/Preloader'
-import ProfileStatus from './ProfileStatus'
-
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+//import ProfileStatus from './ProfileStatus'
+import ProfileStatusWithHooks from './ProfileStatusWithHooks'
+const ProfileInfo = ({profile,status,updateStatus}) => {
+  if (!profile) {
     return <Preloader />
   }
   return (
     <div >
-      {/* <div>
-        <img src='https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' />
-      </div> */}
       <div className={style.descriptionBlock}>
-        <img src={props.profile.photos.small} />
+        <img src={profile.photos.small} />
         <div>
-          Name : {props.profile.fullName}
+          Name : {profile.fullName}
         </div>
         <div>
-          <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+          {/* <ProfileStatus status={props.status} updateStatus={props.updateStatus}/> */}
+          <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
         </div>
         {/* <div>
           Status : {props.profile.aboutMe}
@@ -26,17 +24,18 @@ const ProfileInfo = (props) => {
       </div>
       <div>
         <h3>Contacts</h3>
-        <div>Facebook : {props.profile.contacts.facebook}</div>
-        <div>WebSite : {props.profile.contacts.website}</div>
-        <div>VK : {props.profile.contacts.vk}</div>
-        <div>Twitter : {props.profile.contacts.twitter}</div>
-        <div>Instagram : {props.profile.contacts.instagram}</div>
-        <div>Twitter : {props.profile.contacts.youtube}</div>
-        <div>GitHub : {props.profile.contacts.github}</div>
-        <div>MainLink : {props.profile.contacts.mainLink}</div>
+        <div>Facebook : {profile.contacts.facebook}</div>
+        <div>WebSite : {profile.contacts.website}</div>
+        <div>VK : {profile.contacts.vk}</div>
+        <div>Twitter : {profile.contacts.twitter}</div>
+        <div>Instagram : {profile.contacts.instagram}</div>
+        <div>Twitter : {profile.contacts.youtube}</div>
+        <div>GitHub : {profile.contacts.github}</div>
+        <div>MainLink : {profile.contacts.mainLink}</div>
       </div>
     </div>  
   );
 }
+
 
 export default ProfileInfo;

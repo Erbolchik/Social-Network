@@ -1,51 +1,20 @@
 import React from 'react'
 import style from './Users.module.css'
-import { NavLink } from 'react-router-dom'
+import Paginator from '../common/Paginator/Paginator'
+import User from './User'
 
 
-let Users = (props) => {
-    let pagesCount = 5
-
-    let pages = []
-
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
+let Users = ({ currentPage, totalUserCount, pageSize, onPageChanged, followingInProgress, follow, unfollow, users }, ...props) => {
     return <div>
+        <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalUserCount={totalUserCount} pageSize={pageSize} />
         <div>
-            {pages.map((el,id) => {
-                return <span key={id} className={props.currentPage === el ? style.selectedPage : null} onClick={(e) => props.onPageChanged(el)}>{el}</span>
-            })}
+            {users.map(el => <User key={el.id}
+                user={el}
+                followingInProgress={followingInProgress}
+                follow={follow}
+                unfollow={unfollow} />)
+            }
         </div>
-        {
-            props.users.map(el => <div key={el.id}>
-                <span>
-                    <div className={style.photo}>
-                        <NavLink to={`/profile/${el.id}`}>
-                            <img src={el.photos.small != null ? el.photos.small : "https://sun9-26.userapi.com/c849536/v849536956/49247/q_QRoLFxoJM.jpg"} />
-                        </NavLink>
-                    </div>
-                    <div>
-                        {el.followed ?
-                            <button disabled={props.followingInProgress.some(id => id === el.id)} 
-                            onClick={() => props.unfollow(el.id)}>Unfollowed</button> 
-                            :
-                            <button disabled={props.followingInProgress.some(id => id === el.id)} 
-                            onClick={() =>  props.follow(el.id)}>Follow</button>}
-                    </div>
-                </span>
-                <span>
-                    <span>
-                        <div>{el.name}</div>
-                        <div>{el.status}</div>
-                    </span>
-                    <span>
-                        <div>Almaty</div>
-                        <div>Karaganda</div>
-                    </span>
-                </span>
-            </div>)
-        }
     </div>
 }
 
